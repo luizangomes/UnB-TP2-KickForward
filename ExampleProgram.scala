@@ -1,14 +1,14 @@
 import scala.io.Source
 
 class ExampleProgram{
-  def read_file(path_to_file: String, normalize: (String) => String): (String)={
+  def read_file(path_to_file: String, fn: (String) => String): (String)={
     val data = Source.fromFile(path_to_file).getLines.mkString
-    (data: String)
+    normalize(data: String)
   }
   
-  def filter_chars(str_data: String, scan: (String) => String): (String)={
+  def filter_chars(str_data: String, fn: (String) => String): (String)={
       val pattern = str_data.replaceAll("\\W", "")
-      (pattern: String)
+      scan(pattern: String)
   }
   
 }
